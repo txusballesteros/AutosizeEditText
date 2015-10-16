@@ -3,11 +3,11 @@ AutoscaleEditText
 
 ![](assets/demo.gif)
 
-AutosizeEditText for Android is an extension of native EditText that offer a smooth text size auto scale.
+AutosizeEditText for Android is an extension of native EditText that offer a smooth auto scale text size.
 
 ## Latest Version
 
-![](https://img.shields.io/badge/platform-android-green.svg)
+[![Download](https://api.bintray.com/packages/txusballesteros/maven/AutoscaleEditText/images/download.svg) ](https://bintray.com/txusballesteros/maven/AutoscaleEditText/_latestVersion) ![](https://img.shields.io/badge/platform-android-green.svg)
 
 ## How to use
 
@@ -22,7 +22,7 @@ dependencies {
 }
 ```
 
-### Adding the view to your layout
+### Adding and Customizing the View
 
 Add the view to your xml layout file.
 
@@ -30,12 +30,28 @@ Add the view to your xml layout file.
 <com.txusballesteros.AutoscaleEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp" 
-        ...        
-        app:animationDuration="300"
-        app:textScale="0.7"
-        app:linesLimit="2" />
+        android:textSize="30sp" />
 ```
+
+Now you personalize some of custom parameters of the view.
+
+* **animation Duration**: With this field you can establish the transformation duration in milliseconds, by default it's set to 300ms.
+
+* **linesLimit**: You can use this attribute to set the approximate lines number when the view will triggers the text scale transformation, by default it's set to 2.
+
+* **textScale**: Use this attribute to set the text scale percentage, I mean, if you have set your text size to 30sp and the text scale to 0.7 for example, when the user write a text and this overflows the line limit, the view change the textSize to 21sp or (30 * 0.7), by default it's set to 0.7 (70%).
+
+```xml
+<com.txusballesteros.AutoscaleEditText
+        ...
+        app:linesLimit="3"
+        app:textScale="0.75"
+        app:animationDuration="200" />
+```
+
+## Motivation of the Project
+
+I created this view as a little piece of the [Redbooth](https://redbooth.com/) App for Android.
 
 ## License
 
