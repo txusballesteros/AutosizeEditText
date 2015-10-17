@@ -156,11 +156,7 @@ public class AutoscaleEditText extends EditText {
     }
 
     private float measureText() {
-        float result = 0f;
-        if (textMeasuringText != null) {
-            result = textMeasuringText.measureText(getText().toString());
-        }
-        return result;
+        return textMeasuringText != null ? textMeasuringText.measureText(getText().toString()) : 0f;
     }
 
     @Override
