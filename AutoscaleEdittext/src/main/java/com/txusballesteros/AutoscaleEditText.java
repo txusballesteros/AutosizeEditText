@@ -48,7 +48,7 @@ public class AutoscaleEditText extends EditText {
     private float linesLimit = DEFAULT_LINES_LIMIT;
     private int animationDuration = DEFAULT_ANIMATION_DURATION;
     private float textScale = DEFAULT_TEXT_SCALE;
-    private Paint textMeasuringText;
+    private Paint textMeasuringPaint;
 
     public AutoscaleEditText(Context context) {
         super(context);
@@ -70,14 +70,17 @@ public class AutoscaleEditText extends EditText {
         configureAttributes(attrs);
     }
 
+    @SuppressWarnings("unused")
     public void setLinesLimit(float linesLimit) {
         this.linesLimit = linesLimit;
     }
 
+    @SuppressWarnings("unused")
     public void setTextScale(float textScale) {
         this.textScale = textScale;
     }
 
+    @SuppressWarnings("unused")
     public void setAnimationDuration(int animationDuration) {
         this.animationDuration = animationDuration;
     }
@@ -129,9 +132,9 @@ public class AutoscaleEditText extends EditText {
     }
 
     private void initializeTextMeasurerPaint() {
-        textMeasuringText = new Paint();
-        textMeasuringText.setTypeface(getTypeface());
-        textMeasuringText.setTextSize(originalTextSize);
+        textMeasuringPaint = new Paint();
+        textMeasuringPaint.setTypeface(getTypeface());
+        textMeasuringPaint.setTextSize(originalTextSize);
     }
 
     private void resizeTextToSmallSize() {
@@ -151,14 +154,13 @@ public class AutoscaleEditText extends EditText {
 
     private float calculateNumberOfLinesNedeed() {
         float textSizeInPixels = measureText();
-        float numOfLinesOnScreen = (textSizeInPixels / originalViewWidth);
-        return numOfLinesOnScreen;
+        return (textSizeInPixels / originalViewWidth);
     }
 
     private float measureText() {
         float result = 0f;
-        if (textMeasuringText != null) {
-            result = textMeasuringText.measureText(getText().toString());
+        if (textMeasuringPaint != null) {
+            result = textMeasuringPaint.measureText(getText().toString());
         }
         return result;
     }
